@@ -1,0 +1,361 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <style>
+        body { background-color: #000; }
+        #gangup { float:left; color: #fff; visibility: hidden; width: 50px; height: 300px;}
+        .units { width: 454px; height: 331px; position:relative; }
+        .result { font-size:40px; margin-top: 20px; font-family: arial; color: #fff; text-align:center;}
+        
+        #left { float: left;}
+        #right { float: left; }
+        
+        .selectable { cursor:pointer; position: absolute; -webkit-border-radius: 5px; -moz-border-radius: 5px; border:1px solid #000;}
+        .selectable.active { border-color: #fff; }
+        .selectable:hover  { border-color: #fff; }
+        
+        
+        .unit { width:55px; height: 55px; }
+
+        .mecha { left: 0px; top: 0px; }
+        .speeder { left: 60px; top: 0px; }
+        .eclipse { left: 120px; top: 0px; }
+        .plasma { left: 180px; top: 0px; }
+        .assimilator { left: 240px; top: 0px; }
+        .walker { left: 300px; top: 0px; }
+        .hydronaut { left: 360px; top: 0px; }
+        
+        .marine { left: 0px; top: 60px; }
+        .marauder { left: 60px; top: 60px; }
+        .helicopter { left: 120px; top: 60px; }
+        .tank { left: 180px; top: 60px; }
+        .engineer { left: 240px; top: 60px; }
+        .battery { left: 300px; top: 60px; }
+        .destroyer { left: 360px; top: 60px; }
+
+        .underling { left: 0px; top: 120px; }
+        .swarmer { left: 60px; top: 120px; }
+        .garuda { left: 120px; top: 120px; }
+        .pinzer { left: 180px; top: 120px; }
+        .infector { left: 240px; top: 120px; }
+        .wyrm { left: 300px; top: 120px; }
+        .leviathan { left: 360px; top: 120px; }
+
+        .terrain { width:55px; height: 55px;}
+        .mountain { left: 5px; top: 190px; }
+        .forest { left: 75px; top: 190px; }
+        .desert { left: 145px; top: 190px; }
+        .swamp { left: 215px; top: 190px; }
+        .base { left: 285px; top: 190px; }
+        .plain { left: 355px; top: 190px; }
+        
+        .health { width:40px; height: 35px;}
+        .hp1 { left: 7px; top: 280px; }
+        .hp2 { left: 47px; top: 280px; }
+        .hp3 { left: 87px; top: 280px; }
+        .hp4 { left: 127px; top: 280px; }
+        .hp5 { left: 167px; top: 280px; }
+        .hp6 { left: 207px; top: 280px; }
+        .hp7 { left: 247px; top: 280px; }
+        .hp8 { left: 287px; top: 280px; }
+        .hp9 { left: 327px; top: 280px; }
+        .hp10 { left: 367px; top: 280px; }
+        
+    </style>
+</head>
+<body>
+
+    <div class="units" id="left">
+        <img src="units.png" style="opacity:1;" />
+        <div class="result" id="left-result">0</div>
+        
+        <div class="mecha unit selectable"></div>
+        <div class="speeder unit selectable"></div>
+        <div class="eclipse unit selectable"></div>
+        <div class="plasma unit selectable"></div>
+        <div class="assimilator unit selectable"></div>
+        <div class="walker unit selectable"></div>
+        <div class="hydronaut unit selectable"></div>
+        
+        <div class="marine unit selectable"></div>
+        <div class="marauder unit selectable"></div>
+        <div class="helicopter unit selectable"></div>
+        <div class="tank unit selectable"></div>
+        <div class="engineer unit selectable"></div>
+        <div class="battery unit selectable"></div>
+        <div class="destroyer unit selectable"></div>
+        
+        <div class="underling unit selectable"></div>
+        <div class="swarmer unit selectable"></div>
+        <div class="garuda unit selectable"></div>
+        <div class="pinzer unit selectable"></div>
+        <div class="infector unit selectable"></div>
+        <div class="wyrm unit selectable"></div>
+        <div class="leviathan unit selectable"></div>
+        
+        <div class="mountain terrain selectable"></div>
+        <div class="forest terrain selectable"></div>
+        <div class="desert terrain selectable"></div>
+        <div class="swamp terrain selectable"></div>
+        <div class="base terrain selectable"></div>
+        <div class="plain terrain selectable"></div>
+        
+        <div class="hp1 health selectable"></div>
+        <div class="hp2 health selectable"></div>
+        <div class="hp3 health selectable"></div>
+        <div class="hp4 health selectable"></div>
+        <div class="hp5 health selectable"></div>
+        <div class="hp6 health selectable"></div> 
+        <div class="hp7 health selectable"></div>                   
+        <div class="hp8 health selectable"></div>                   
+        <div class="hp9 health selectable"></div>                   
+        <div class="hp10 health selectable"></div>                   
+        
+    </div>
+    <div id="gangup">
+        Gang up
+    </div>
+    <div class="units" id="right">
+        <img src="units.png" style="opacity:1;" />
+        <div class="result" id="right-result">0</div>
+        
+        <div class="mecha unit selectable"></div>
+        <div class="speeder unit selectable"></div>
+        <div class="eclipse unit selectable"></div>
+        <div class="plasma unit selectable"></div>
+        <div class="assimilator unit selectable"></div>
+        <div class="walker unit selectable"></div>
+        <div class="hydronaut unit selectable"></div>
+        
+        <div class="marine unit selectable"></div>
+        <div class="marauder unit selectable"></div>
+        <div class="helicopter unit selectable"></div>
+        <div class="tank unit selectable"></div>
+        <div class="engineer unit selectable"></div>
+        <div class="battery unit selectable"></div>
+        <div class="destroyer unit selectable"></div>
+        
+        <div class="underling unit selectable"></div>
+        <div class="swarmer unit selectable"></div>
+        <div class="garuda unit selectable"></div>
+        <div class="pinzer unit selectable"></div>
+        <div class="infector unit selectable"></div>
+        <div class="wyrm unit selectable"></div>
+        <div class="leviathan unit selectable"></div>
+        
+        <div class="mountain terrain selectable"></div>
+        <div class="forest terrain selectable"></div>
+        <div class="desert terrain selectable"></div>
+        <div class="swamp terrain selectable"></div>
+        <div class="base terrain selectable"></div>
+        <div class="plain terrain selectable"></div>
+        
+        <div class="hp1 health selectable"></div>
+        <div class="hp2 health selectable"></div>
+        <div class="hp3 health selectable"></div>
+        <div class="hp4 health selectable"></div>
+        <div class="hp5 health selectable"></div>
+        <div class="hp6 health selectable"></div> 
+        <div class="hp7 health selectable"></div>                   
+        <div class="hp8 health selectable"></div>                   
+        <div class="hp9 health selectable"></div>                   
+        <div class="hp10 health selectable"></div>                   
+        
+    </div>
+    
+    
+    <script>
+    var $ = jQuery;
+    
+    $(".unit").click(function()
+    {
+        var unit = $(this);        
+        unit.siblings(".unit").removeClass("active");
+        unit.addClass("active");       
+        calc();
+    });
+    $(".health").click(function()
+    {
+        var health = $(this);        
+        health.siblings(".health").removeClass("active");
+        health.addClass("active");       
+        calc();
+    });
+    $(".terrain").click(function()
+    {
+        var terrain = $(this);        
+        terrain.siblings(".terrain").removeClass("active");
+        terrain.addClass("active");   
+        calc();    
+    });
+    
+    
+    function calc()
+    {
+        
+        var leftUnit = $("#left .unit.active");
+        var leftHealth = $("#left .health.active");
+        var leftTerrain = $("#left .terrain.active");
+        
+        var rightUnit = $("#right .unit.active");
+        var rightHealth = $("#right .health.active");
+        var rightTerrain = $("#right .terrain.active");   
+        
+        
+        try
+        {
+            var leftToRight = getAttackDamage(leftUnit, leftTerrain, leftHealth, rightUnit, rightTerrain, 0);
+            var rightToLeft = getAttackDamage(rightUnit, rightTerrain, rightHealth, leftUnit, leftTerrain, 0);
+        }
+        catch (err)
+        {
+            $("#left-result").html("-");
+            $("#right-result").html("-");  
+            return;  
+        }
+
+        var leftAtk = getUnitAttack(leftUnit, rightUnit) + getUnitTerrainBonus(leftUnit, leftTerrain)[0];
+        var leftDef = getUnitDefense(leftUnit) + getUnitTerrainBonus(leftUnit, leftTerrain)[1];
+
+        var rightAtk = getUnitAttack(rightUnit, leftUnit) + getUnitTerrainBonus(rightUnit, rightTerrain)[0];
+        var rightDef = getUnitDefense(rightUnit) + getUnitTerrainBonus(rightUnit, rightTerrain)[1];
+         
+
+        $("#left-result").html("-" + rightToLeft[0] + "hp (" + leftAtk + " atk, " + leftDef + " def)");
+        $("#right-result").html("-" + leftToRight[0] + "hp (" + rightAtk + " atk, " + rightDef + " def)");
+
+
+
+    }
+    
+    
+    function getAttackDamage(atkUnit, atkTerrain, atkHealth, defUnit, defTerrain, gangUp)
+    {
+        var A = getUnitAttack(atkUnit, defUnit);
+        var Ta = getUnitTerrainBonus(atkUnit, atkTerrain)[0];
+        var D = getUnitDefense(defUnit);
+        var Td = getUnitTerrainBonus(defUnit, defTerrain)[1];
+        var B = gangUp || 0;
+        var H = getHealth(atkHealth);
+        
+        var p = 0.05 * (((A + Ta) - (D + Td)) + B) + 0.5;
+        if (p > 1) p = 1;
+        if (p < 0) p = 0;
+        
+        var numRandoms = H * 6;
+
+        var SIMULATIONS = 100;        
+        var minHit = 10000;
+        var maxHit = 0;
+        var totalHit = 0;
+        
+
+        for (var S = 0; S < SIMULATIONS; S++)
+        {
+            var hit = 0;
+            for (var i = 0; i < numRandoms; i++)
+            {
+                if (Math.random() < p)
+                {
+                    hit++;
+                }
+            }
+            hit = Math.round(hit / 6);
+            
+            totalHit += hit;
+            if (hit < minHit) minHit = hit;
+            if (hit > maxHit) maxHit = hit;
+        }
+        
+        return [Math.round(totalHit / SIMULATIONS), minHit, maxHit];
+    }
+    
+    function getHealth(health)
+    {
+        var H = function(c) { return health.hasClass(c); }
+        if (H("hp1")) return 1;
+        if (H("hp2")) return 2;
+        if (H("hp3")) return 3;
+        if (H("hp4")) return 4;
+        if (H("hp5")) return 5;
+        if (H("hp6")) return 6;
+        if (H("hp7")) return 7;
+        if (H("hp8")) return 8;
+        if (H("hp9")) return 9;
+        if (H("hp10")) return 10;
+    }
+    
+    function getUnitType(unit)
+    {
+        return getUnitInfo(unit)[0];
+    }
+    function getUnitDefense(unit)
+    {
+        return getUnitInfo(unit)[2];
+    }
+    function getUnitAttack(unit, otherUnit)
+    {
+        var otherType = getUnitType(otherUnit);
+        var offset = -1;
+        if (otherType == "light") offset = 0;
+        if (otherType == "heavy") offset = 1;
+        if (otherType == "air") offset = 2;
+        if (otherType == "sea") offset = 3;
+        
+        return getUnitInfo(unit)[1][offset];
+    }
+    
+    function getUnitTerrainBonus(unit, terrain)
+    {
+        var T = function(c) { return terrain.hasClass(c); }
+        var offset = -1;
+        
+        if (T("plain")) offset = 0;
+        if (T("base")) offset = 1;
+        if (T("forest")) offset = 2;
+        if (T("mountain")) offset = 3;
+        if (T("swamp")) offset = 4;
+        if (T("desert")) offset = 5;
+        
+        if (offset == -1) return [0, 0];
+        
+        return getUnitInfo(unit)[3][offset];
+    }
+    
+    function getUnitInfo(unit)
+    {
+        var U = function(c) { return unit.hasClass(c); }
+
+        if (U("marine")) return ["light", [6, 3, 3, 2], 5, [[0, 0], [+2, +2], [+2, +3], [+2, +4], [-1, -2], [-1, -1], [0, 0], [+2, +2], [0, 0]]];
+        if (U("engineer")) return ["light", [0, 0, 0, 0], 0, [[0, 0], [+2, +2], [+2, +3], [+2, +4], [-1, -2], [-1, -1], [0, 0], [+2, +2], [0, 0]]];
+        if (U("marauder")) return ["heavy", [10, 4, 4, 4], 7, [[0, 0], [0, -1], [0, -3], [0, 0], [-1, -2], [0, 0], [0, 0], [0, -1], [0, 0]]];
+        if (U("tank")) return ["heavy", [10, 9, 0, 9], 12, [[0, 0], [0, -1], [0, -3], [0, 0], [-1, -2], [0, 0], [0, 0], [0, -1], [0, 0]]];
+        if (U("helicopter")) return ["air", [12, 7, 9, 8], 10, [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]];
+        if (U("battery")) return ["heavy", [12, 10, 12, 10], 4, [[0, 0], [0, -1], [0, -3], [0, 0], [-1, -2], [0, 0], [0, 0], [0, -1], [0, 0]]];
+        if (U("destroyer")) return ["sea", [10, 10, 12, 16], 12, [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, -1], [0, 0]]];
+
+        if (U("underling")) return ["light", [6, 3, 0, 2], 5, [[0, 0], [+2, +2], [+2, +3], [+2, +4], [-1, -2], [-1, -1], [0, 0], [+2, +2], [0, 0]]];
+        if (U("swarmer")) return ["air", [7, 5, 3, 6], 5, [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]];
+        if (U("garuda")) return ["air", [7, 7, 9, 8], 8, [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]];
+        if (U("infector")) return ["light", [0, 0, 0, 0], 0, [[0, 0], [+2, +2], [+2, +3], [+2, +4], [-1, -2], [-1, -1], [0, 0], [+2, +2], [0, 0]]];
+        if (U("pinzer")) return ["heavy", [12, 10, 1, 10], 13, [[0, 0], [0, -1], [0, -3], [0, 0], [-1, -2], [0, 0], [0, 0], [0, -1], [0, 0]]];
+        if (U("wyrm")) return ["heavy", [10, 10, 11, 10], 4, [[0, 0], [0, -1], [0, -3], [0, 0], [-1, -2], [0, 0], [0, 0], [0, -1], [0, 0]]];
+        if (U("leviathan")) return ["sea", [10, 10, 8, 12], 11, [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, -1], [0, 0]]];
+
+        if (U("mecha")) return ["light", [6, 3, 3, 2], 6, [[0, 0], [+2, +2], [+2, +3], [+2, +4], [-1, -2], [-1, -1], [0, 0], [+2, +2], [0, 0]]];
+        if (U("assimilator")) return ["light", [0, 0, 0, 0], 0, [[0, 0], [+2, +2], [+2, +3], [+2, +4], [-1, -2], [-1, -1], [0, 0], [+2, +2], [0, 0]]];
+        if (U("speeder")) return ["heavy", [10, 5, 5, 5], 8, [[0, 0], [0, -1], [0, -3], [0, 0], [-1, -2], [0, 0], [0, 0], [0, -1], [0, 0]]];
+        if (U("eclipse")) return ["heavy", [10, 3, 12, 5], 9, [[0, 0], [0, -1], [0, -3], [0, 0], [-1, -2], [0, 0], [0, 0], [0, -1], [0, 0]]];
+        if (U("plasma")) return ["heavy", [10, 11, 6, 11], 14, [[0, 0], [0, -1], [0, -3], [0, 0], [-1, -2], [0, 0], [0, 0], [0, -1], [0, 0]]];
+        if (U("walker")) return ["heavy", [10, 10, 11, 10], 5, [[0, 0], [0, -1], [0, -3], [0, 0], [-1, -2], [0, 0], [0, 0], [0, -1], [0, 0]]];
+        if (U("hydronaut")) return ["sea", [12, 10, 12, 13], 10, [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, -1], [0, 0]]];
+    }
+    
+    $(".mecha").click();
+    $(".plain").click();
+    $(".hp10").click();
+    
+    
+    </script>
+
+</body>
